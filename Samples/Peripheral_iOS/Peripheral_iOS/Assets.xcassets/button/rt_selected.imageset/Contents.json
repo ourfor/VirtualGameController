@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "type=trigger, State=selected, LR=Right.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "type=trigger, State=selected, LR=Right@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "type=trigger, State=selected, LR=Right@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

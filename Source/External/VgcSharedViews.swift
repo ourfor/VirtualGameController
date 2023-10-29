@@ -10,6 +10,7 @@ import AVFoundation
 import Foundation
 import UIKit
 import VirtualGameController
+import SnapKit
 
 public let animationSpeed = 0.35
 
@@ -282,7 +283,7 @@ var peripheralManager = VgcManager.peripheral
         serviceSelectorView = ServiceSelectorView(frame: CGRect(x: 25, y: controlOverlay.bounds.size.height * 0.50, width: controlOverlay.bounds.size.width - 50, height: controlOverlay.bounds.size.height - 200))
         serviceSelectorView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleRightMargin]
         controlOverlay.addSubview(serviceSelectorView)
-//        controlOverlay.isHidden = true;
+        controlOverlay.isHidden = true;
     }
     
     @objc func peripheralDidConnect(_ notification: Notification) {
@@ -440,7 +441,7 @@ open class ServiceSelectorView: UIView, UITableViewDataSource, UITableViewDelega
 }
 
 // Basic button element, with support for 3d touch
-class VgcButton: UIView {
+class VgcButton: UIButton {
     let element: Element!
     var nameLabel: UILabel!
     var valueLabel: UILabel!
@@ -500,18 +501,19 @@ class VgcButton: UIView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.isHighlighted = true
         let touch = touches.first
         
         // If 3d touch is not supported, just send a "1" value
         if traitCollection.forceTouchCapability == .available {
             element.value = percentageForce(touch!) as Float as AnyObject
             valueLabel.text = "\(element.value)"
-            let colorValue = CGFloat(baseGrayShade - (element.value as! Float / 10))
-            backgroundColor = UIColor(red: colorValue, green: colorValue, blue: colorValue, alpha: 1)
+//            let colorValue = CGFloat(baseGrayShade - (element.value as! Float / 10))
+//            backgroundColor = UIColor(red: colorValue, green: colorValue, blue: colorValue, alpha: 1)
         } else {
             element.value = 1.0 as Float as AnyObject
             valueLabel.text = "\(element.value)"
-            backgroundColor = UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1)
+//            backgroundColor = UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1)
         }
         VgcManager.peripheral.sendElementState(element)
     }
@@ -523,22 +525,23 @@ class VgcButton: UIView {
         if traitCollection.forceTouchCapability == .available {
             element.value = percentageForce(touch!) as Float as AnyObject
             valueLabel.text = "\(element.value)"
-            let colorValue = CGFloat(baseGrayShade - (element.value as! Float) / 10)
-            backgroundColor = UIColor(red: colorValue, green: colorValue, blue: colorValue, alpha: 1)
+//            let colorValue = CGFloat(baseGrayShade - (element.value as! Float) / 10)
+//            backgroundColor = UIColor(red: colorValue, green: colorValue, blue: colorValue, alpha: 1)
         } else {
             element.value = 1.0 as Float as AnyObject
             valueLabel.text = "\(element.value)"
-            backgroundColor = UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1)
+//            backgroundColor = UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1)
         }
         
         VgcManager.peripheral.sendElementState(element)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.isHighlighted = false
         element.value = 0.0 as Float as AnyObject
         valueLabel.text = "\(element.value)"
         VgcManager.peripheral.sendElementState(element)
-        backgroundColor = UIColor(white: CGFloat(baseGrayShade), alpha: 1.0)
+//        backgroundColor = UIColor(white: CGFloat(baseGrayShade), alpha: 1.0)
     }
 }
 
@@ -625,10 +628,16 @@ class VgcStick: UIView {
             var newX = touch!.location(in: self).x
             var newY = touch!.location(in: self).y
             let movementMarginSize = bounds.size.width * 0.25
-            if newX < movementMarginSize { newX = movementMarginSize }
-            if newX > bounds.size.width - movementMarginSize { newX = bounds.size.width - movementMarginSize }
-            if newY < movementMarginSize { newY = movementMarginSize }
-            if newY > bounds.size.height - movementMarginSize { newY = bounds.size.height - movementMarginSize }
+            let size = bounds.size
+            var offset = CGPointMake(newX-size.width/2, -(newY-size.height/2))
+            let radius = size.width/2
+            if (offset.x*offset.x + offset.y*offset.y > radius*radius) {
+                let norm = sqrt(offset.x*offset.x+offset.y*offset.y)
+                offset.x = radius*offset.x/norm
+                offset.y = radius*offset.y/norm
+                newX = offset.x+size.width/2
+                newY = -offset.y+size.height/2
+            }
             controlView.center = CGPoint(x: newX, y: newY)
             
             // Regularize the value between -1 and 1
