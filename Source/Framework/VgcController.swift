@@ -2045,7 +2045,7 @@ import Foundation
             return vgcButtonPressed
         }
         
-        override var value: Float {
+        @nonobjc override var value: Float {
             get {
                 return (element.value).floatValue!
             }
@@ -2114,7 +2114,7 @@ import Foundation
         
         override var collection: GCControllerElement? { return (vgcCollection! as GCControllerElement) }
         
-        override var value: Float {
+        @nonobjc override var value: Float {
             get {
                 if let floatValue = element.value.floatValue {
                     return floatValue

@@ -282,6 +282,7 @@ var peripheralManager = VgcManager.peripheral
         serviceSelectorView = ServiceSelectorView(frame: CGRect(x: 25, y: controlOverlay.bounds.size.height * 0.50, width: controlOverlay.bounds.size.width - 50, height: controlOverlay.bounds.size.height - 200))
         serviceSelectorView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleRightMargin]
         controlOverlay.addSubview(serviceSelectorView)
+//        controlOverlay.isHidden = true;
     }
     
     @objc func peripheralDidConnect(_ notification: Notification) {

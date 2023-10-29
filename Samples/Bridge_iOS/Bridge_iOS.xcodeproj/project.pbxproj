@@ -21,13 +21,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		20B4956C21A65B990081D1E2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 20F205571C252C34005A45FF /* VirtualGameControllerIOS.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 20AD71F921A1B0E700753DDD;
-			remoteInfo = VirtualGameControllerIOS_Tests;
-		};
 		20F2055B1C252C34005A45FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20F205571C252C34005A45FF /* VirtualGameControllerIOS.xcodeproj */;
@@ -41,6 +34,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 202BBF601BE569BC004D47EC;
 			remoteInfo = VirtualGameControllerIOS;
+		};
+		88A00E372AED4AF400071350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20F205571C252C34005A45FF /* VirtualGameControllerIOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 202C1EFD21B1DC240094F6E9;
+			remoteInfo = VirtualGameControllerIOSTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -123,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				20F2055C1C252C34005A45FF /* VirtualGameController.framework */,
-				20B4956D21A65B990081D1E2 /* VirtualGameControllerIOS_Tests.xctest */,
+				88A00E382AED4AF400071350 /* VirtualGameControllerIOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,7 +162,7 @@
 				TargetAttributes = {
 					20F2053D1C252BEC005A45FF = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = CN7G7TCUME;
+						DevelopmentTeam = 335W2YNT8B;
 						LastSwiftMigration = 0830;
 					};
 				};
@@ -172,6 +172,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -192,18 +193,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		20B4956D21A65B990081D1E2 /* VirtualGameControllerIOS_Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = VirtualGameControllerIOS_Tests.xctest;
-			remoteRef = 20B4956C21A65B990081D1E2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		20F2055C1C252C34005A45FF /* VirtualGameController.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = VirtualGameController.framework;
 			remoteRef = 20F2055B1C252C34005A45FF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		88A00E382AED4AF400071350 /* VirtualGameControllerIOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VirtualGameControllerIOSTests.xctest;
+			remoteRef = 88A00E372AED4AF400071350 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -375,10 +376,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = CN7G7TCUME;
+				DEVELOPMENT_TEAM = 335W2YNT8B;
 				INFOPLIST_FILE = Bridge_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS-unique";
+				PRODUCT_BUNDLE_IDENTIFIER = top.ourfor.app.gamepad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -391,10 +392,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = CN7G7TCUME;
+				DEVELOPMENT_TEAM = 335W2YNT8B;
 				INFOPLIST_FILE = Bridge_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS-unique";
+				PRODUCT_BUNDLE_IDENTIFIER = top.ourfor.app.gamepad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};

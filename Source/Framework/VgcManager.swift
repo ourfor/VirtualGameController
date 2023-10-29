@@ -206,7 +206,9 @@ let messageValueSeperator = ":"
     ///
     @objc public static var appIdentifier = "vgc"
     
-    @objc static var serviceDomain = "local"
+    @objc public static var serviceDomain = "local"
+    
+    @objc public static var servicePort = 8888
     
     @objc public static var uniqueServiceIdentifierString: String {
         if VgcManager.useRandomServiceName == true {

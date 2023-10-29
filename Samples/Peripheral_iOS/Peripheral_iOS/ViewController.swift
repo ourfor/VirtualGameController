@@ -117,6 +117,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // REQUIRED: Kick off the search for Centrals and Bridges that we can connect to.  When
         // services are found, the VgcPeripheralFoundService will fire.
+        VgcManager.servicePort = 8888
         VgcManager.peripheral.browseForServices()
     }
     

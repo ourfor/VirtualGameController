@@ -98,9 +98,9 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
         super.init()
         
         if deviceIsTypeOfBridge() {
-            localService = NetService(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeBridge, name: VgcManager.centralServiceName, port: 0)
+            localService = NetService(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeBridge, name: VgcManager.centralServiceName, port: Int32(VgcManager.servicePort))
         } else {
-            localService = NetService(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeCentral, name: VgcManager.centralServiceName, port: 0)
+            localService = NetService(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeCentral, name: VgcManager.centralServiceName, port: Int32(VgcManager.servicePort))
         }
         
         localService.delegate = self
